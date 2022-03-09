@@ -1,0 +1,39 @@
+@import ../../theme/flex
+@import ../../theme/colors
+
+@keyframes show
+    0%
+        top: 100px
+        opacity: 0
+    100%
+        top: 0px
+        opacity: 1
+
+@keyframes roll
+    0%
+        top: 0
+    50%
+        top: 20px
+    100%
+        top: 0
+    
+.container
+    +flex(row)
+    
+.letter
+    position: relative
+    top: 0
+    left: 0
+    animation: show 1000ms ease-in
+    font-size: 50px
+    &::selection
+        background: #000
+        color: $backgrund
+
+.letter_inner
+    position: relative
+    top: 0
+    transition: top 200ms ease-in
+
+.topped
+    top: 10px

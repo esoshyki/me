@@ -1,20 +1,10 @@
 import type { NextPage } from 'next'
-import { useEffect } from 'react'
+import Home from '../screens/home'
 import { theme } from '../theme'
 
-interface HomePageProps {
-    message?: string,
-}
+const HomePage: NextPage = () => {
 
-const Home: NextPage<HomePageProps> = ({
-    message,
-}: HomePageProps) => {
-
-    useEffect(() => {
-
-    }, [message])
-
-    return (
+   return (
         <div style={{
             fontSize: 30,
             fontWeight: 900,
@@ -26,25 +16,10 @@ const Home: NextPage<HomePageProps> = ({
             top: 0,
             left: 0
         }}>
-            {!!message && message}
+            <Home />
         </div>
     )
 }
 
-export default Home
+export default HomePage
 
-export const getStaticProps = async () => {
-
-    const message = await new Promise((resolve) => {
-        setTimeout(() => {
-            resolve("Message")
-        }, 3000)
-    });
-
-    return {
-        props: {
-            message
-        }
-    };
-
-}

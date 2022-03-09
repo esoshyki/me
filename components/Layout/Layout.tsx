@@ -1,4 +1,5 @@
-import { ReactElement, ReactChild, Fragment, ReactComponentElement, ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react'
+import classes from './Layout.module.sass'
 
 interface LayoutProps {
     children: ReactNode
@@ -10,7 +11,7 @@ function Layout ({ children } : LayoutProps) {
             <header>
                 Header
             </header>
-            <main>
+            <main className={classes.main} >
                 {children}
             </main>
             <footer>
