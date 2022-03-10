@@ -17,8 +17,9 @@ export const setScreen = (payload: Screens) : Action => ({
     payload
 })
 
-export const changeScreenReauest = () : Action => ({
-    type: ViewActions.ChangeScreenRequest
+export const changeScreenRequest = (payload: Screens) : Action => ({
+    type: ViewActions.ChangeScreenRequest,
+    payload
 })
 
 export const setLocale = (payload: Locales) : Action => ({

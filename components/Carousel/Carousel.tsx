@@ -1,3 +1,4 @@
+import { relative } from 'node:path/win32';
 import { Fragment, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { select } from '../../store/select';
@@ -9,6 +10,7 @@ const Carousel = ({ items } : {
 }) => {
 
     const showCarousel = useSelector(select.view.showCarousel);
+    const screen = useSelector(select.view.screen);
 
     const rootRef = useRef<HTMLDivElement>(null);
 
@@ -16,10 +18,28 @@ const Carousel = ({ items } : {
         if (rootRef.current) {
             rootRef.current.style.opacity = "1";
         }
-    }
+    };
+
+    const selected = items.find(item => item.screen === screen);
+    console.log(selected);
+    console.log(items);
+
+    const relative: ICarouselItem[]  = !selected ? items : 
+        [selected, ...items.slice(selected.id + 1), ...items.slice(0, selected.id)];
+
+    console.log(relative);
+
+    relative[0].left = 0;
+    relative[0].top = 0;
+    relative[1].left = 100;
+    relative[1].top = -100;
+    relative[2].left = 200;
+    relative[2].top = 0;
+    relative[3].left = 100;
+    relative[3].top = 100;
 
     return (
-        <Fragment>
+        <div className={classes.carouselWrapper}>
             {showCarousel && <div 
                 onAnimationEnd={onAnimationEnd}
                 ref={rootRef}
@@ -31,11 +51,13 @@ const Carousel = ({ items } : {
                             title={item.title}
                             html={item.html}
                             left={item.left}
+                            top={item.top}
+                            id={item.id}
                         />    
                     </Fragment>
                 )) }
             </div>}
-        </Fragment>
+        </div>
     )
 };
 

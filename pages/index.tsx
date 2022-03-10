@@ -26,8 +26,6 @@ const HomePage: NextPage = () => {
 
     const locale = router.locale;
 
-    console.log(locale);
-
     useEffect(() => {
         if (locale === Locales.en || locale === Locales.ru) {
             dispatch(setLocale(locale))

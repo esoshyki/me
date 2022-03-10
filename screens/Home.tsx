@@ -14,8 +14,6 @@ const Home = () => {
 
     const items = locale === Locales.ru ? carouselData.ruCarousel : carouselData.enCarousel;
 
-    
-
     return (
         <div className={[classes.screen, classes.home].join(" ")}>
             <Fragment>

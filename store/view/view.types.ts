@@ -2,7 +2,8 @@ import { Locales } from "../../content/locales";
 
 export enum Screens {
     Home = "Home",
-    NodeJS = "NodeJS"
+    NodeJS = "NodeJS",
+    Quality = "Quality"
 };
 
 export enum ViewActions {

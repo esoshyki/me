@@ -1,15 +1,14 @@
-import { takeEvery } from 'redux-saga/effects'
+import { put, takeEvery } from 'redux-saga/effects'
 import { Action } from '..'
+import { setScreen } from './view.actions';
 import { Screens, ViewActions } from './view.types'
 
 function* changeScreenWorker (action: Action) {
     const screen: Screens = action.payload;
 
-    if (screen === Screens.Home) {
-        console.log("SAGA!!!");
-    }
+    yield put(setScreen(screen));
 }
 
 export default function* ViewSagas () {
-    takeEvery(ViewActions.ChangeScreenRequest, changeScreenWorker)
+    yield takeEvery(ViewActions.ChangeScreenRequest, changeScreenWorker)
 }
