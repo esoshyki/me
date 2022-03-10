@@ -25,3 +25,7 @@ export const setLocale = (payload: Locales) : Action => ({
     type: ViewActions.SetLocale,
     payload
 })
+
+export const ToggleShowCarousel = () : Action => ({
+    type: ViewActions.ToggleShowCarousel
+})

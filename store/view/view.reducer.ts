@@ -7,7 +7,7 @@ const initState: ViewState = {
     locale: Locales.en
 }
 
-export const viewReducer = (state = initState, action: Action) => {
+export const viewReducer = (state = initState, action: Action) : ViewState => {
     const { type, payload } = action;
 
     switch (type) {
@@ -27,6 +27,12 @@ export const viewReducer = (state = initState, action: Action) => {
             return {
                 ...state,
                 locale: payload
+            }
+
+        case ViewActions.ToggleShowCarousel:
+            return {
+                ...state,
+                showCarousel: state.showCarousel ? undefined : true
             }
 
         default: 

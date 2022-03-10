@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import Audio from "../components/Audio";
 import { Provider } from "react-redux";
 import { store } from "../store";
+import { appWithTranslation } from 'next-i18next';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -16,4 +17,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

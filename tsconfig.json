@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "audio-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "audio-env.d.ts", "**/*.ts", "**/*.tsx", "components/Scene/index.jsx", "components/Scene/Scene.jsx"],
   "exclude": ["node_modules"],
 }

@@ -1,7 +1,8 @@
 import { Locales } from "../../content/locales";
 
 export enum Screens {
-    Home = "Home"
+    Home = "Home",
+    NodeJS = "NodeJS"
 };
 
 export enum ViewActions {
@@ -9,7 +10,8 @@ export enum ViewActions {
     SetScreen = "View/Set-Screen",
     ChangeScreenRequest = "View/Change-Screen-Request",
     ToggleChangeLayout = "View/Toggle-Change-Layout",
-    SetLocale = "View/Set-Locale"
+    SetLocale = "View/Set-Locale",
+    ToggleShowCarousel = "View/Toggle-Show-Carousel"
 }
 
 export type ViewState = {
@@ -17,4 +19,5 @@ export type ViewState = {
     loading?: true,
     changeLayout?: true,
     locale: Locales,
+    showCarousel?: true
 };

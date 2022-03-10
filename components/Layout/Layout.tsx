@@ -1,4 +1,5 @@
 import { Fragment, ReactNode } from 'react'
+import Header from './Header';
 import classes from './Layout.module.sass'
 
 interface LayoutProps {
@@ -8,9 +9,7 @@ interface LayoutProps {
 function Layout ({ children } : LayoutProps) {
     return (
         <Fragment>
-            <header>
-                Header
-            </header>
+            <Header />
             <main className={classes.main} >
                 {children}
             </main>

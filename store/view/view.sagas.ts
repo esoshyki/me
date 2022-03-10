@@ -1,8 +1,13 @@
 import { takeEvery } from 'redux-saga/effects'
-import { ViewActions } from './view.types'
+import { Action } from '..'
+import { Screens, ViewActions } from './view.types'
 
-function* changeScreenWorker () {
+function* changeScreenWorker (action: Action) {
+    const screen: Screens = action.payload;
 
+    if (screen === Screens.Home) {
+        console.log("SAGA!!!");
+    }
 }
 
 export default function* ViewSagas () {

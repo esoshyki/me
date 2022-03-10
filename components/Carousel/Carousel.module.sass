@@ -1,17 +1,54 @@
+@keyframes show
+    0%
+        opacity: 0
+        transform: skewX(-20deg)
+        filter: drop-shadow(30px 10px 4px #4444dd)
+
+    100%
+        opacity: 1
+        transform: skewX(0)
+        filter: drop-shadow(0, 0, 0, #444ddd)
+    
 .root
-    top: 100px
+    top: calc(50% - 125px)
     width: 80%
     margin: auto
     position: absolute
     overflow: hidden
+    height: 250px
+    z-index: 10
+    animation: show 2000ms ease-in 200ms
+    opacity: 0
 
 .item
     width: 100%
     position: absolute
     transition: left 300ms ease-in, opacity 200ms ease-in
     opacity: 1
+    padding: 20px
+
+@keyframes rotate
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
 
 .item__icon
-    width: 60px
-    height: 60px
-    background-size: cover
+    width: 100px
+    height: 100px
+    background-size: contain
+    background-repeat: no-repeat
+    background-position: center
+    float: left
+    margin: 20px
+    animation: rotate 6000ms linear 0s infinite
+
+
+.item__content
+    h3
+        font-size: 30px
+        margin-top: 15px
+
+    p
+        font-size: 18px
+        font-weight: 500

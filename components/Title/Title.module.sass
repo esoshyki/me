@@ -16,10 +16,23 @@
         top: 20px
     100%
         top: 0
-    
+   
 .container
     +flex(row)
-    
+    z-index: 10
+    position: absolute
+    top: calc(50% - 90px)
+    left: calc(50% - 125px)
+    transition: top 1500ms ease-in, left 1500ms ease-in
+    width: 250px
+
+    * 
+        user-select: none
+
+.left
+    left: 0
+    top: 10px
+
 .letter
     position: relative
     top: 0
@@ -34,6 +47,9 @@
     position: relative
     top: 0
     transition: top 200ms ease-in
+
+.static
+    po
 
 .topped
     top: -10px

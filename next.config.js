@@ -3,11 +3,10 @@ const nextConfig = {
     reactStrictMode: true,
 }
 
+const { i18n } = require('./next-i18next.config');
+
 module.exports = {
-    i18n: {
-        locales: ['en-US', 'ru-RU'],
-        defaultLocale: 'en-US',
-    },
+    i18n,
     webpack(config, options) {
         config.module.rules.push({
             test: /\.(mp3|wav)$/,

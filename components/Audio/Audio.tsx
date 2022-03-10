@@ -1,18 +1,22 @@
 import { Fragment, useEffect, useRef } from "react";
 import src from "../../assets/2.mp3";
+import classes from './Audio.module.sass';
 
 const Audio = () => {
 
-    const auidoRef = useRef<HTMLAudioElement>(null);
+    const audioRef = useRef<HTMLAudioElement>(null);
 
-    useEffect(() => {[
-      setTimeout(() => auidoRef.current?.play(), 1000)  
-    ]})
-
+    const onClick = () => {
+        if (!audioRef.current) return;
+        audioRef.current.paused ? 
+        audioRef.current.play() : 
+        audioRef.current.pause() 
+    }
 
     return (
         <Fragment>
-            <audio autoPlay={true} loop={true} preload="auto" ref={auidoRef}>
+            <div className={classes.Ukraine} onClick={onClick}></div>
+            <audio autoPlay={true} loop={true} preload="auto" ref={audioRef}>
                 <source src={src}  type="audio/mp3" />
             </audio>
          </Fragment>
