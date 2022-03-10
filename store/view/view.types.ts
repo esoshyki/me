@@ -3,7 +3,8 @@ import { Locales } from "../../content/locales";
 export enum Screens {
     Home = "Home",
     NodeJS = "NodeJS",
-    Quality = "Quality"
+    Quality = "Quality",
+    Seo = "Seo"
 };
 
 export enum ViewActions {

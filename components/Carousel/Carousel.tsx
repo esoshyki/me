@@ -1,7 +1,7 @@
-import { relative } from 'node:path/win32';
-import { Fragment, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { Fragment, useEffect, useRef, useState, WheelEvent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { select } from '../../store/select';
+import { changeScreenRequest } from '../../store/view/view.actions';
 import classes from './Carousel.module.sass'
 import CarouselItem, { ICarouselItem } from './CarouselItem';
 
@@ -9,8 +9,10 @@ const Carousel = ({ items } : {
     items: ICarouselItem[]
 }) => {
 
+    const dispatch = useDispatch();
     const showCarousel = useSelector(select.view.showCarousel);
     const screen = useSelector(select.view.screen);
+    const [disable, setDisable] = useState(false);
 
     const rootRef = useRef<HTMLDivElement>(null);
 
@@ -34,8 +36,33 @@ const Carousel = ({ items } : {
     relative[3].left = 100;
     relative[3].top = 100;
 
+    const onWheel = (e: WheelEvent<HTMLDivElement>) => {
+        if (disable) return;
+        if (e.deltaY > 0) {
+            if (relative[3].screen) {
+                dispatch(changeScreenRequest(relative[3].screen));
+                setDisable(true)
+            }
+        };
+
+        if (e.deltaY < 0) {
+            if (relative[1].screen) {
+                dispatch(changeScreenRequest(relative[1].screen));
+                setDisable(true)     
+            } 
+        }
+    }
+
+    useEffect(() => {
+        if (disable) {
+            setTimeout(() => {
+                setDisable(false)
+            }, 300)
+        }
+    }, [disable])
+
     return (
-        <div className={classes.carouselWrapper}>
+        <div className={classes.carouselWrapper} onWheel={onWheel}>
             {showCarousel && <div 
                 onAnimationEnd={onAnimationEnd}
                 ref={rootRef}

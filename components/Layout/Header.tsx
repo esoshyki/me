@@ -50,6 +50,10 @@ const Header = () => {
         {
             title: content.header[locale].quality,
             screen: Screens.Quality
+        },
+        {
+            title: content.header[locale].seo,
+            screen: Screens.Seo
         }
     ]
 

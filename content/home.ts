@@ -42,9 +42,10 @@ const ruCarousel: ICarouselItem[] = [
         top: 0
     },
     {
-        icon: "/",
-        title: "",
-        html: "",
+        screen: Screens.Seo,
+        icon: "/seo.png",
+        title: "Продвижение сайта",
+        html: "Наши специалисты по SEO обеспечат продвижение сайта в поисковиках и грамотную логическую структуру",
         id: 3,
         left: 100,
         top: 100
@@ -80,9 +81,10 @@ const enCarousel: ICarouselItem[] = [
         top: 0
     },
     {
-        icon: "/",
-        title: "",
-        html: "",
+        screen: Screens.Seo,
+        icon: "/seo.png",
+        title: "Website promotion",
+        html: "Our SEO specialists will ensure the promotion of the site in search engines and a competent logical structure",
         id: 3,
         left: 100,
         top: 100
