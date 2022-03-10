@@ -1,8 +1,38 @@
 import type { NextPage } from 'next'
-import Home from '../screens/home'
+import { useRouter } from 'next/router'
+import { loadavg } from 'os'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Locales } from '../content/locales'
+import Home from '../screens/Home'
+import { select } from '../store/select'
+import { setLocale } from '../store/view/view.actions'
 import { theme } from '../theme'
 
 const HomePage: NextPage = () => {
+
+    const screen = useSelector(select.view.screen);
+
+    const dispatch = useDispatch();
+
+    const getScreen = () => {
+        switch (screen) {
+            default:
+                return <Home />
+        }
+    }
+
+    const router = useRouter();
+
+    const locale = router.locale;
+
+    console.log(locale);
+
+    useEffect(() => {
+        if (locale === Locales.en || locale === Locales.ru) {
+            dispatch(setLocale(locale))
+        }
+    }, [dispatch, locale])
 
    return (
         <div style={{
@@ -16,7 +46,7 @@ const HomePage: NextPage = () => {
             top: 0,
             left: 0
         }}>
-            <Home />
+            {getScreen()}
         </div>
     )
 }
