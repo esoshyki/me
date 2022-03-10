@@ -4,6 +4,7 @@ import { select } from '../../store/select';
 import { changeScreenRequest } from '../../store/view/view.actions';
 import classes from './Carousel.module.sass'
 import CarouselItem, { ICarouselItem } from './CarouselItem';
+import swipe from '../../assets/swipe.wav';
 
 const Carousel = ({ items } : {
     items: ICarouselItem[]
@@ -11,10 +12,12 @@ const Carousel = ({ items } : {
 
     const dispatch = useDispatch();
     const showCarousel = useSelector(select.view.showCarousel);
+    const soundOn = useSelector(select.sound.soundOn);
     const screen = useSelector(select.view.screen);
     const [disable, setDisable] = useState(false);
 
     const rootRef = useRef<HTMLDivElement>(null);
+    const audioRef = useRef<HTMLAudioElement>(null);
 
     const onAnimationEnd = () => {
         if (rootRef.current) {
@@ -55,6 +58,12 @@ const Carousel = ({ items } : {
 
     useEffect(() => {
         if (disable) {
+            if (audioRef.current && soundOn) {
+                if (!audioRef.current.paused) {
+                    audioRef.current.currentTime = 0
+                }
+                audioRef.current.play();
+            };
             setTimeout(() => {
                 setDisable(false)
             }, 300)
@@ -63,6 +72,9 @@ const Carousel = ({ items } : {
 
     return (
         <div className={classes.carouselWrapper} onWheel={onWheel}>
+            <audio ref={audioRef}>
+                <source src={swipe} type="audio/wav"/>    
+            </audio>
             {showCarousel && <div 
                 onAnimationEnd={onAnimationEnd}
                 ref={rootRef}

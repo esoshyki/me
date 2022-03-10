@@ -1,4 +1,5 @@
 export type SoundState = {
     playing?: true,
-    volume: number
+    volume: number,
+    on?: true
 };

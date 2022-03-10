@@ -36,6 +36,12 @@ export const soundReducer = (state = initState, action: Action) : SoundState => 
                 playing: state.playing ? undefined : true
             }
 
+        case SoundActions.toggleSound:
+            return {
+                ...state,
+                on: payload
+            }
+
         default:
             return state
     }

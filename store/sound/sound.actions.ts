@@ -4,7 +4,8 @@ export enum SoundActions {
     setVolume = "Sound/Set-Volume",
     volumeUp = "Sound/Volume-Up",
     volumeDown = "Sound/Volume-Down",
-    togglePlay = "Sound/Toggle-Play"
+    togglePlay = "Sound/Toggle-Play",
+    toggleSound = "Sound/Toggle-Sound"
 }
 
 export const setVolume = (payload: number) : Action => ({
@@ -22,4 +23,9 @@ export const volumeDown = () : Action => ({
 
 export const togglePlay = () : Action => ({
     type: SoundActions.togglePlay
+})
+
+export const toggleSound = (payload?: true) : Action => ({
+    type: SoundActions.toggleSound,
+    payload
 })
