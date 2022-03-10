@@ -16,7 +16,8 @@ const CarouselItem = ({
 } : ICarouselItem) => {
 
     return (
-        <div className={classes.item} style={{
+        <div className={classes.item} 
+            style={{
             left: `${left}%`,
             top: `${top}%`
         }}>

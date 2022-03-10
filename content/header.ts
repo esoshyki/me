@@ -4,11 +4,11 @@ export const headerContent = {
     [Locales.ru]: {
         react: "Реакт",
         nodeJS: "Node JS",
-        quality: "Quality"
+        quality: "Качество"
     },
     [Locales.en]: {
         react: "React",
         nodeJS: "Node JS",
-        quality : "Качество"
+        quality : "Quality"
     }
 };

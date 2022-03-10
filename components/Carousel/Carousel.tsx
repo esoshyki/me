@@ -21,13 +21,9 @@ const Carousel = ({ items } : {
     };
 
     const selected = items.find(item => item.screen === screen);
-    console.log(selected);
-    console.log(items);
 
     const relative: ICarouselItem[]  = !selected ? items : 
         [selected, ...items.slice(selected.id + 1), ...items.slice(0, selected.id)];
-
-    console.log(relative);
 
     relative[0].left = 0;
     relative[0].top = 0;

@@ -22,8 +22,18 @@
 .header__link
     margin: 0 20px
     position: relative
+    color: #d1c6c68c
+
+@keyframes underline
+    0%
+        width: 0
+    100%
+        width: 100%
 
 .selected
+    filter: drop-shadow(10px 10px 10px #000)
+    transition: filter 200ms ease-in, color 300ms ease-in
+    color: #fff
     &::after
         position: absolute
         content: ""
@@ -32,6 +42,7 @@
         background: #fff
         bottom: -10px
         left: 0
+        animation: underline 200ms linear 0s
 
 
     
