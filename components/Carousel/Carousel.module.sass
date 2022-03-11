@@ -14,11 +14,8 @@
     height: 100%
     overflow: hidden
     transition: 300ms ease-in
-    z-index: 30
 
 .active
-    z-index: 400
-
   
 .root
     top: calc(50% - 150px)
@@ -29,6 +26,7 @@
     animation: show 2000ms ease-in 200ms
     transition: opacity 500ms ease-in, scale 300ms ease-in,
     opacity: 0
+    z-index: 400
 
 .hidden
     opacity: 0
@@ -41,6 +39,8 @@
     -moz-transform: scale(0.6) translateX(-30%) translateY(30%)
     -ms-transform: scale(0.6) translateX(-30%) translateY(30%)
     transform: scale(0.6) translateX(-30%) translateY(30%)
+    +laptop
+        opacity: 0 !important
 
 .item
     width: 70%
@@ -50,7 +50,6 @@
     padding: 20px
     height: 300px
     margin-left: 15%
-    z-index: 400
     +mobile
         width: 90%
         margin-left: 5%
@@ -87,7 +86,7 @@
         font-family: 'Source Sans Pro', sans-serif
         margin: 0
         +mobile
-            font-size: 1.5rem
+            font-size: 1.3rem
             margin: 0
             min-height: 50px
             text-align: justify
@@ -96,4 +95,6 @@
         font-weight: 500
         font-family: 'Source Sans Pro', sans-serif
         text-align: justify
+        +mobile
+            font-size: 1.2rem
         

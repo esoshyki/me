@@ -1,5 +1,6 @@
 @import ../../theme/flex
 @import ../../theme/colors
+@import ../../theme/media
 
 @keyframes show
     0%
@@ -43,6 +44,8 @@
     &::selection
         background: #000
         color: $backgrund
+    +mobile
+        font-size: 35px
 
 .letter_inner
     position: relative

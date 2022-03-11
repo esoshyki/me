@@ -1,10 +1,12 @@
+@import ../../theme/media
+    
 .root
     position: absolute
     right: 0
     top: 0
     width: 100%
     height: 100%
-    z-index: 20
+    z-index: 201
     perspective: 20em
     perspective-origin: 100% calc(30% - 2em)
     transform-style: preserve-3d
@@ -25,6 +27,10 @@
     *
         transition: opacity 200ms ease-in
         padding-top: 100px
+    +laptop
+        padding-top: 50px
+    +mobile
+        width: 100%
 
 .visible
     transform: rotateX(0)
@@ -46,6 +52,11 @@
     border: 4px solid #fff
     &:hover
         cursor: pointer
+    +mobile
+        width: 160px
+        height: 50px
+        border-radius: 25px
+        border-width: 2px
 
 .button__circle
     height: 62px
@@ -54,12 +65,19 @@
     top: 0px
     border-radius: 31px
     transition: 100ms ease-in
+    +mobile
+        height: 48px
+        width: 48px
+        border-radius: 27px
     &:hover
         cursor: pointer
-        width: 66px
-        height: 66px
+        width: 50px
+        height: 50px
         border-radius: 33px
         top: -2px
+        +mobile
+            top: -1
+
 
 .button__text
     position: absolute
@@ -67,6 +85,9 @@
     top: 22px
     color: #fff
     font-size: 12px
+    +mobile
+        font-size: 10px
+        top: 17px
 
 .on
     div:first-child
@@ -74,14 +95,22 @@
         left: 0
         &:hover
             left: -2px
+            +mobile
+                left: -1px
     div:last-child
         left: 70px
+        +mobile
+            left: 40px
 
 .off
     div:first-child
         background-color: #fff
         left: calc(100% - 62px)
+        +mobile
+            left: calc(100% - 47px)
         &:hover
-            left: calc(100% - 64px)
+            left: calc(100% - 54px)
+            +mobile
+                left: calc(100% - 60px)
     div:last-child
         left: 20px
