@@ -25,11 +25,11 @@ const HeaderLink = ({ title, selected, screen } : {
     }
     
     return (
-        <a href='#' 
+        <div
             onClick={onClick}
             className={getClassName()}>
             {title}
-        </a>
+        </div>
     )
 }
 
