@@ -1,4 +1,5 @@
 import { contactContent } from "./contact";
+import { contactFormContent } from "./form";
 import { headerContent } from "./header";
 import { homeContent } from "./home";
 
@@ -11,5 +12,8 @@ export const content = {
     },
     contact: {
         ...contactContent
+    },
+    contactForm: {
+        ...contactFormContent
     }
 }

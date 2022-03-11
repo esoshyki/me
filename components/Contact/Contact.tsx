@@ -4,6 +4,7 @@ import { content } from '../../content';
 import { select } from '../../store/select';
 import { toggleShowContact } from '../../store/view/view.actions';
 import classes from './Contact.module.sass'
+import Form from './Form';
 
 const Contact = () => {
 
@@ -39,11 +40,15 @@ const Contact = () => {
             </div>
             <div 
                 ref={rootRef}
-                className={classes.root} >
+                className={classes.root} 
+                style={{zIndex: showContact ? "499" : "10"}}
+                >
                 <div className={getContentClass()}>
                     <h2>
                         {content.contact[locale].h2}
                     </h2>
+
+                    <Form />
                 </div>
             </div>
         </Fragment>
