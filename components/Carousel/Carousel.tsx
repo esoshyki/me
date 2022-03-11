@@ -12,6 +12,7 @@ const Carousel = ({ items } : {
 
     const dispatch = useDispatch();
     const showCarousel = useSelector(select.view.showCarousel);
+    const showContact = useSelector(select.view.showContact);
     const soundOn = useSelector(select.sound.soundOn);
     const screen = useSelector(select.view.screen);
     const [disable, setDisable] = useState(false);
@@ -75,9 +76,12 @@ const Carousel = ({ items } : {
     }, [disable])
 
     const getRootClass = () => {
-        return hide ? 
-        [classes.root, classes.hidden].join(" ") : 
-        [classes.root, classes.shown].join(" ")
+        const collected = [classes.root];
+        collected.push(hide? classes.hidden : classes.shown);
+        if (showContact) {
+            collected.push(classes.inactive)
+        }
+        return collected.join(" ")
     }
 
     return (

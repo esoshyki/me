@@ -30,3 +30,13 @@ export const setLocale = (payload: Locales) : Action => ({
 export const ToggleShowCarousel = () : Action => ({
     type: ViewActions.ToggleShowCarousel
 })
+
+export const toggleShowContact = (payload? : true) : Action => ({
+    type: ViewActions.ToggleShwoContact,
+    payload
+})
+
+export const toggleShowContactWrapper = (payload?: true) : Action => ({
+    type: ViewActions.ToggleShowContactWrapper,
+    payload
+})

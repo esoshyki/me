@@ -35,6 +35,18 @@ export const viewReducer = (state = initState, action: Action) : ViewState => {
                 showCarousel: state.showCarousel ? undefined : true
             }
 
+        case ViewActions.ToggleShwoContact:
+            return {
+                ...state,
+                showContact: payload
+            }
+
+        case ViewActions.ToggleShowContactWrapper:
+            return {
+                ...state,
+                showContactWrapper: payload
+            }
+
         default: 
             return state
     }

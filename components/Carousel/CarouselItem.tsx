@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import { select } from '../../store/select';
 import { Screens } from '../../store/view/view.types';
 import classes from './Carousel.module.sass'
 
@@ -15,9 +17,22 @@ const CarouselItem = ({
     icon, title, html, left, top
 } : ICarouselItem) => {
 
+    const showContact = useSelector(select.view.showContact);
+
+    const getClassName = () => {
+        const collected = [classes.item]
+        if (left === 0 && top === 0) {
+            collected.push(classes.active)
+        }
+        if (showContact) {
+            collected.push(classes.transformed)
+        }
+        return collected.join(" ")
+    }
+
     return (
         <div 
-            className={classes.item} 
+            className={getClassName()} 
             style={{
             left: `${left}%`,
             top: `${top}%`

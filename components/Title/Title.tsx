@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useRef } from "react";
 import TitleLetter from "./TitleLetter";
 import classes from './Title.module.sass';
-import { ToggleShowCarousel } from "../../store/view/view.actions";
+import { ToggleShowCarousel, toggleShowContactWrapper } from "../../store/view/view.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { select } from "../../store/select";
 
@@ -14,6 +14,7 @@ const Title = ({text} : TitleProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const dispatch = useDispatch();
     const showCarousel = useSelector(select.view.showCarousel);
+    const showContactWrapper = useSelector(select.view.showContactWrapper);
 
     useEffect(() => {
         setTimeout(() => {
@@ -24,6 +25,9 @@ const Title = ({text} : TitleProps) => {
     const onTransitionEnd = () => {
         if (!showCarousel) {
             dispatch(ToggleShowCarousel());
+        }
+        if (!showContactWrapper) {
+            dispatch(toggleShowContactWrapper(true))
         }
     }
 

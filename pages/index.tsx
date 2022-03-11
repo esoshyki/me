@@ -43,7 +43,6 @@ const HomePage: NextPage = () => {
             position: "absolute",
             top: 0,
             left: 0,
-            zIndex: 15
         }}>
             {getScreen()}
         </div>

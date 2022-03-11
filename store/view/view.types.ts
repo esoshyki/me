@@ -14,6 +14,8 @@ export enum ViewActions {
     ToggleChangeLayout = "View/Toggle-Change-Layout",
     SetLocale = "View/Set-Locale",
     ToggleShowCarousel = "View/Toggle-Show-Carousel",
+    ToggleShwoContact = "View/Toggle-Show-Contact",
+    ToggleShowContactWrapper = "View/Toggle-Show-Contact-Wrapper"
 }
 
 export type ViewState = {
@@ -22,4 +24,6 @@ export type ViewState = {
     changeLayout?: true,
     locale: Locales,
     showCarousel?: true,
+    showContact?: true,
+    showContactWrapper?: true
 };
