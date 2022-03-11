@@ -15,14 +15,13 @@ const Carousel = ({ items } : {
     const soundOn = useSelector(select.sound.soundOn);
     const screen = useSelector(select.view.screen);
     const [disable, setDisable] = useState(false);
+    const [hide, setHide] = useState(true);
 
     const rootRef = useRef<HTMLDivElement>(null);
     const audioRef = useRef<HTMLAudioElement>(null);
 
     const onAnimationEnd = () => {
-        if (rootRef.current) {
-            rootRef.current.style.opacity = "1";
-        }
+        setHide(false);
     };
 
     const selected = items.find(item => item.screen === screen);
@@ -45,13 +44,15 @@ const Carousel = ({ items } : {
             if (relative[3].screen) {
                 dispatch(changeScreenRequest(relative[3].screen));
                 setDisable(true)
+                setHide(true)
             }
         };
 
         if (e.deltaY < 0) {
             if (relative[1].screen) {
                 dispatch(changeScreenRequest(relative[1].screen));
-                setDisable(true)     
+                setDisable(true) 
+                setHide(true)    
             } 
         }
     }
@@ -67,8 +68,17 @@ const Carousel = ({ items } : {
             setTimeout(() => {
                 setDisable(false)
             }, 300)
+            setTimeout(() => {
+                setHide(false)
+            }, 300)
         }
     }, [disable])
+
+    const getRootClass = () => {
+        return hide ? 
+        [classes.root, classes.hidden].join(" ") : 
+        [classes.root, classes.shown].join(" ")
+    }
 
     return (
         <div className={classes.carouselWrapper} onWheel={onWheel}>
@@ -78,7 +88,7 @@ const Carousel = ({ items } : {
             {showCarousel && <div 
                 onAnimationEnd={onAnimationEnd}
                 ref={rootRef}
-                className={classes.root}>
+                className={getRootClass()}>
                 {!!items && items.map((item, idx) => (
                     <Fragment key={idx}>
                         <CarouselItem 

@@ -1,5 +1,7 @@
 @import ../../theme/colors
 @import ../../theme/flex
+@import ../../theme/fonts
+
 .main
     background-color: $backgrund
     width: 100%
@@ -7,13 +9,17 @@
     position: absolute
     top: 0
     left: 0
+    transition: background-color 300ms ease-in
+
+.space
+    background-color: #000
 
 .header
     width: 100%
     position: absolute
     top: 0
     left: 0
-    z-index: 15
+    z-index: 16
     +flex(row)
     padding: 20px
     color: #fff
@@ -35,6 +41,8 @@
     filter: drop-shadow(10px 10px 10px #000)
     transition: filter 200ms ease-in, color 300ms ease-in
     color: #fff
+    -webkit-text-stroke-color: #000
+    -webkit-text-stroke-width: 1px
     &::after
         position: absolute
         content: ""
