@@ -1,6 +1,7 @@
 @import ../../theme/colors
 @import ../../theme/flex
 @import ../../theme/fonts
+@import ../../theme/media
 
 .main
     background-color: $backgrund
@@ -24,6 +25,11 @@
     padding: 20px
     color: #fff
     font-weight: 600
+    +laptop
+        justify-content: flex-end
+        margin-top: 70px
+    +mobile
+        justify-content: center
 
 .header__link
     margin: 0 20px
@@ -42,6 +48,12 @@
         color: #c3d616
         &::after
             background-color: #c3d616 !important
+    +mobile
+        font-size: 1rem
+        min-width: 70px
+        padding: 10px
+        letter-spacing: 2px
+        margin: 0
 
 @keyframes underline
     0%

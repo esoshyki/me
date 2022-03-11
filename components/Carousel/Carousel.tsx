@@ -40,7 +40,7 @@ const Carousel = ({ items } : {
 
     const onWheel = (e: WheelEvent<HTMLDivElement>) => {
         if (disable) return;
-        if (e.deltaY > 0) {
+        if (e.deltaY < 0) {
             if (relative[3].screen) {
                 dispatch(changeScreenRequest(relative[3].screen));
                 setDisable(true)
@@ -48,7 +48,7 @@ const Carousel = ({ items } : {
             }
         };
 
-        if (e.deltaY < 0) {
+        if (e.deltaY > 0) {
             if (relative[1].screen) {
                 dispatch(changeScreenRequest(relative[1].screen));
                 setDisable(true) 
