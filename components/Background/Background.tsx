@@ -17,7 +17,7 @@ const Background = () => {
         const ball = Matter.Bodies.circle(
             Math.floor(Math.random() * window.screen.width),
             0,
-            Math.random() * 5,{
+            Math.random() * 4,{
                 mass: 0.5,
                 restitution: 0.9,
                 friction: 0.005,
@@ -60,7 +60,7 @@ const Background = () => {
         Matter.Runner.run(engine.current)
         Matter.Render.run(render)
 
-        intervalRef.current = setInterval(createBalls, 50);
+        intervalRef.current = setInterval(createBalls, 40);
 
         setRender(render)
     }

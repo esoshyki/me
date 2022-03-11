@@ -27,12 +27,25 @@
     background-repeat: no-repeat
     transition: 200ms ease-in
     filter: drop-shadow(10px 10px 10px #000)
+    background-image: url(/sound_off.png)
+    background-size: 35px
+    filter: invert(1)
     &:hover
         cursor: pointer
 
 .soundOn
-    background-image: url(/sound_on.png)
+
 .soundOff
-    background-image: url(/sound_off.png)
-    background-size: 30px
-    filter: invert(1)
+    &::after
+        content: ""
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        background-image: url(/cancel.png)
+        background-size: cover
+        background-size: 35px
+        background-repeat: no-repeat
+        background-position: center
+        transform: rotate(8deg)
