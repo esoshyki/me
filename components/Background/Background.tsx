@@ -29,7 +29,7 @@ const Background = () => {
         Matter.World.add(engine.current.world, ball);
         setTimeout(() => {
             Matter.World.remove(engine.current.world, ball)
-        }, 1500)
+        }, 2000)
     }
 
     const starStarFall = () => {

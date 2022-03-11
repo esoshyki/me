@@ -39,7 +39,8 @@
     min-width: 100px
     text-align: flex-start
     user-select: none
-    transition: color 200ms ease-in
+    transition: color 200ms ease-in, left 300ms ease-in
+    left: 0
     &::after
         transition: background-color 200ms ease-in
     &:hover
@@ -62,8 +63,9 @@
 
 .selected
     filter: drop-shadow(10px 10px 10px #000)
-    transition: filter 200ms ease-in, color 300ms ease-in
+    transition: filter 200ms ease-in, color 300ms ease-in, left 300ms
     color: #fff
+    left: 10px
     &::after
         position: absolute
         content: ""
