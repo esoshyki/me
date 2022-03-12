@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import Carousel from '../components/Carousel';
+import Planet from '../components/Planet';
 import Title from '../components/Title';
 import { content } from '../content';
 import { carouselData } from '../content/home';
@@ -20,6 +21,7 @@ const Home = () => {
                 <Carousel items={items} />
             </Fragment>
             <Title text={content.home[locale].manao || ""} />
+            <Planet />
         </div>
     )
 };
