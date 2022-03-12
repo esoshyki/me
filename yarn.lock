@@ -322,6 +322,14 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.0.tgz#7f698254aadf921e48dda8c0a6b304026b8a9323"
   integrity sha512-JLo+Y592QzIE+q7Dl2pMUtt4q8SKYI5jDrZxrozEQxnGVOyYE+GWK9eLkwTaeN9DDctlaRAQ3TBmzZ1qdLE30A==
 
+"@types/gl-react@^3.15.4":
+  version "3.15.4"
+  resolved "https://registry.yarnpkg.com/@types/gl-react/-/gl-react-3.15.4.tgz#97efb07f721b55c6543421487d0240a463cdefc5"
+  integrity sha512-AyzX3iZHIX0bjzOKCQvJLnC/5fTsSwaSEc4aObEszqnVO7eR/+lxTN9F1DuEG/BF9c1yXSSe0idioYpkOa48LQ==
+  dependencies:
+    "@types/react" "*"
+    csstype "^3.0.2"
+
 "@types/hoist-non-react-statics@^3.3.0", "@types/hoist-non-react-statics@^3.3.1":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
@@ -1376,6 +1384,16 @@ gl-format-compiler-error@^1.0.2:
     glsl-shader-name "^1.0.0"
     sprintf-js "^1.0.3"
 
+gl-react-dom@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/gl-react-dom/-/gl-react-dom-5.1.0.tgz#8298156bce3602ccb0d8265b5a9ef9c2c7bfef49"
+  integrity sha512-oJ4y6xlB2cP5bJmRN2+jXh7OXcH3e9d4Gwd3gSDmut752bE5X9P39x15zqJAEhH1nuwBj5YfNiB1rD1ILdJSiQ==
+  dependencies:
+    invariant "^2.2.4"
+    prop-types "^15.7.2"
+    raf "^3.4.1"
+    webgltexture-loader-dom "1.0.0"
+
 gl-react@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/gl-react/-/gl-react-5.0.0.tgz#33ce47942c068a137250cbdceb4aae31f1ac81ec"
@@ -2300,6 +2318,11 @@ path-type@^4.0.0:
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
+performance-now@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
+  integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
+
 picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
@@ -2357,6 +2380,13 @@ queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
+
+raf@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
+  integrity sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==
+  dependencies:
+    performance-now "^2.1.0"
 
 react-composer@^5.0.2:
   version "5.0.2"
@@ -3015,6 +3045,36 @@ webgl-sdf-generator@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/webgl-sdf-generator/-/webgl-sdf-generator-1.1.1.tgz#3e1b422b3d87cd3cc77f2602c9db63bc0f6accbd"
   integrity sha512-9Z0JcMTFxeE+b2x1LJTdnaT8rT8aEp7MVxkNwoycNmJWwPdzoXzMh0BjJSh/AEFP+KPYZUli814h8bJZFIZ2jA==
+
+webgltexture-loader-dom-canvas@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/webgltexture-loader-dom-canvas/-/webgltexture-loader-dom-canvas-1.0.0.tgz#fc00051950f25a1339b0ef047fefe7c72b80450a"
+  integrity sha512-lRDoPVE4GXFyfsl/E5+sZd7m6304RmBRky0SmgHlqJZJySFrCbQMF/hMQkWNWM5iYks84kRUGlwugW/c6OgpDw==
+  dependencies:
+    webgltexture-loader "^1.0.0"
+
+webgltexture-loader-dom-image-url@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/webgltexture-loader-dom-image-url/-/webgltexture-loader-dom-image-url-1.0.0.tgz#f3a3889122d912c2f77e273c011823b189e68638"
+  integrity sha512-KiQ16cLBTjoCQfdvfy1SQP3wMWEPW9ADqsODyhd+6nMg7qD6FmewF3OZs6chF4yfDtlVVXRYI/cDGF1K9MK5Mg==
+  dependencies:
+    webgltexture-loader "^1.0.0"
+
+webgltexture-loader-dom-video@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/webgltexture-loader-dom-video/-/webgltexture-loader-dom-video-1.0.0.tgz#cb5d5423190ec7d6d21b154d548c7e9d2d44546f"
+  integrity sha512-o3zB2XQEMAqgHQeNavoy4q5/lwIIt1MjF6Qj+pUDju9VlovJXGJiCIZ/suv715YgS3k36/pg97847GhV3bHczQ==
+  dependencies:
+    webgltexture-loader "^1.0.0"
+
+webgltexture-loader-dom@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/webgltexture-loader-dom/-/webgltexture-loader-dom-1.0.0.tgz#930bcfcc612db5bc5e648f8ad756289ab0a1fd6f"
+  integrity sha512-JavQ9Hvv3DIYx6WuqzVa76bn2YCcq1lazUdzf277VZWrmxVCln5QFjyTfWZozgYtT21lVeu6MdMOUIbY4xhjqA==
+  dependencies:
+    webgltexture-loader-dom-canvas "^1.0.0"
+    webgltexture-loader-dom-image-url "^1.0.0"
+    webgltexture-loader-dom-video "^1.0.0"
 
 webgltexture-loader-ndarray@1.1.1:
   version "1.1.1"

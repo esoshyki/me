@@ -17,13 +17,14 @@ const Background = () => {
         const ball = Matter.Bodies.circle(
             Math.floor(Math.random() * window.screen.width),
             0,
-            Math.random() * 4,{
-                mass: 0.5,
+            Math.random() * 3,{
+                mass: 10,
                 restitution: 0.9,
-                friction: 0.005,
+                friction: 0.05,
                 render: {
                     fillStyle: "#fff"
-                }
+                },
+                isSensor: true
             }
         )
         Matter.World.add(engine.current.world, ball);
@@ -60,7 +61,7 @@ const Background = () => {
         Matter.Runner.run(engine.current)
         Matter.Render.run(render)
 
-        intervalRef.current = setInterval(createBalls, 40);
+        intervalRef.current = setInterval(createBalls, 200);
 
         setRender(render)
     }

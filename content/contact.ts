@@ -8,7 +8,7 @@ export const contactContent = {
         seo: "SEO"
     },
     [Locales.en]: {
-        h2: "Contuct us",
+        h2: "Contact us",
         nodeJS: "Node JS",
         quality : "Quality",
         seo: "SEO"
