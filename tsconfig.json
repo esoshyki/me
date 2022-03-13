@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "audio-env.d.ts", "**/*.ts", "**/*.tsx", "components/Scene/index.jsx", "components/Scene/Scene.jsx"],
+  "include": ["declarations/*.d.ts", "next-env.d.ts", "audio-env.d.ts", "**/*.ts", "**/*.tsx", "components/Scene/index.jsx", "components/Scene/Scene.jsx", "components/Planet/shaders/atmosphere.js"],
   "exclude": ["node_modules"],
 }
