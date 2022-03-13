@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { select } from '../../store/select';
 import Background from '../Background';
 import Contact from '../Contact';
+import Planet from '../Planet';
 import Header from './Header';
 import classes from './Layout.module.sass'
 
@@ -31,6 +32,7 @@ function Layout ({ children } : LayoutProps) {
             <footer>
                 Footer
             </footer>
+            <Planet />
         </Fragment>
     )
 };

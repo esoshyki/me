@@ -7,87 +7,87 @@ import { select } from '../../store/select';
 const Background = () => {
 
     const scene = useRef<HTMLDivElement>(null);
-    const engine = useRef(Matter.Engine.create())
-    const intervalRef = useRef<NodeJS.Timer>();
-    const [render, setRender] = useState<any>();
+    // const engine = useRef(Matter.Engine.create())
+    // const intervalRef = useRef<NodeJS.Timer>();
+    // const [render, setRender] = useState<any>();
 
-    const showCarousel = useSelector(select.view.showCarousel);
+    // const showCarousel = useSelector(select.view.showCarousel);
 
-    const createBalls = () => {
-        const ball = Matter.Bodies.circle(
-            Math.floor(Math.random() * window.screen.width),
-            0,
-            Math.random() * 3,{
-                mass: 10,
-                restitution: 0.9,
-                friction: 0.05,
-                render: {
-                    fillStyle: "#fff"
-                },
-                isSensor: true
-            }
-        )
-        Matter.World.add(engine.current.world, ball);
-        setTimeout(() => {
-            Matter.World.remove(engine.current.world, ball)
-        }, 2000)
-    }
+    // const createBalls = () => {
+    //     const ball = Matter.Bodies.circle(
+    //         Math.floor(Math.random() * window.screen.width),
+    //         0,
+    //         Math.random() * 3,{
+    //             mass: 10,
+    //             restitution: 0.9,
+    //             friction: 0.05,
+    //             render: {
+    //                 fillStyle: "#fff"
+    //             },
+    //             isSensor: true
+    //         }
+    //     )
+    //     Matter.World.add(engine.current.world, ball);
+    //     setTimeout(() => {
+    //         Matter.World.remove(engine.current.world, ball)
+    //     }, 2000)
+    // }
 
-    const starStarFall = () => {
-        if (!scene.current) return;
-        const cw = window.screen.width;
-        const ch = window.screen.height;
+    // const starStarFall = () => {
+    //     if (!scene.current) return;
+    //     const cw = window.screen.width;
+    //     const ch = window.screen.height;
 
-        const render = Matter.Render.create({
-            element: scene.current,
-            engine: engine.current,
-            options: {
-                width: cw,
-                height: ch,
-                wireframes: false,
-                background: "transparent",
-            }
-        })
+    //     const render = Matter.Render.create({
+    //         element: scene.current,
+    //         engine: engine.current,
+    //         options: {
+    //             width: cw,
+    //             height: ch,
+    //             wireframes: false,
+    //             background: "transparent",
+    //         }
+    //     })
 
-        Matter.World.add(engine.current.world, [
-            Matter.Bodies.rectangle(cw / 2, -10, cw, 20, { isStatic: true, render: {
-                fillStyle: "#000"
-            } }),
-            Matter.Bodies.rectangle(-10, ch / 2, 20, ch, { isStatic: true }),
-            Matter.Bodies.rectangle(cw / 2, ch + 10, cw, 20, { isStatic: true }),
-            Matter.Bodies.rectangle(cw + 10, ch / 2, 20, ch, { isStatic: true })
-          ])
+    //     Matter.World.add(engine.current.world, [
+    //         Matter.Bodies.rectangle(cw / 2, -10, cw, 20, { isStatic: true, render: {
+    //             fillStyle: "#000"
+    //         } }),
+    //         Matter.Bodies.rectangle(-10, ch / 2, 20, ch, { isStatic: true }),
+    //         Matter.Bodies.rectangle(cw / 2, ch + 10, cw, 20, { isStatic: true }),
+    //         Matter.Bodies.rectangle(cw + 10, ch / 2, 20, ch, { isStatic: true })
+    //       ])
 
-        Matter.Runner.run(engine.current)
-        Matter.Render.run(render)
+    //     Matter.Runner.run(engine.current)
+    //     Matter.Render.run(render)
 
-        intervalRef.current = setInterval(createBalls, 200);
+    //     intervalRef.current = setInterval(createBalls, 200);
 
-        setRender(render)
-    }
+    //     setRender(render)
+    // }
 
-    const endStarFall = (render: any) => {
-        Matter.Render.stop(render)
-        Matter.World.clear(engine.current.world, false)
-        Matter.Engine.clear(engine.current)
-        render.canvas.remove()
-        render.textures = {};
-        intervalRef.current && clearInterval(intervalRef.current)
-    }
+    // const endStarFall = (render: any) => {
+    //     Matter.Render.stop(render)
+    //     Matter.World.clear(engine.current.world, false)
+    //     Matter.Engine.clear(engine.current)
+    //     render.canvas.remove()
+    //     render.textures = {};
+    //     intervalRef.current && clearInterval(intervalRef.current)
+    // }
 
-    useEffect(() => {
+    // useEffect(() => {
   
-        return () => {
-            endStarFall(render)
-        }
+    //     return () => {
+    //         endStarFall(render)
+    //     }
 
-    }, [])
+    // }, [])
 
-    useEffect(() => {
-        if (showCarousel) {
-            starStarFall()
-        };
-    }, [showCarousel])
+    // useEffect(() => {
+    //     if (showCarousel) {
+    //         starStarFall()
+    //     };
+    // }, [showCarousel])
 
     return (
         <div 

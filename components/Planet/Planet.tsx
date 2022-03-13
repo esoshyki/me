@@ -46,7 +46,7 @@ const Planet = () => {
             zoom: 2,
           }}
           onCreated={({ gl }) => {
-            gl.setClearColor("rgba(0, 0, 0 ,0)");
+            gl.setClearColor("#fff)", 0);
           }}
         >
           <Suspense fallback={null}>
