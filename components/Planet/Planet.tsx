@@ -2,18 +2,14 @@ import { Fragment } from "react";
 import classes from "./Planet.module.sass";
 import { Suspense, useRef } from "react";
 import { Canvas, useFrame, useLoader } from "react-three-fiber";
-import { Stats, OrbitControls } from "@react-three/drei";
 import * as three from "three";
 import { TextureLoader } from "three";
-import { shaders } from "./shaders/atmosphere";
-import { Surface } from "gl-react-dom"; // for React DOM
-import { Node } from "gl-react";
 
 const Earth = () => {
   const earth = useRef<three.Mesh>();
 
   useFrame(() => {
-    earth.current!.rotation.y += 0.01;
+    earth.current!.rotation.y += 0.001;
   });
 
   const [colorMap] = useLoader(TextureLoader, ["/earth.jpeg"]);
