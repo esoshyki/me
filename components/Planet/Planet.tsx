@@ -37,7 +37,7 @@ const shaders = {
         void main() {
             vertexNormal = normalize(normal);
             gl_Position = projectionMatrix * modelViewMatrix * vec4(
-                position, 1
+                position, 0.9
             );
     }
     `,
@@ -58,7 +58,7 @@ const Earth = () => {
     });
 
     return (
-        <mesh ref={earth} position={[-1, -1, 0]}>
+        <mesh ref={earth} position={[0, 0, 0]}>
             <sphereBufferGeometry args={[1, 50, 50]} />
             <shaderMaterial 
                 vertexShader={shaders.vertexShader}
@@ -80,7 +80,7 @@ const Atmosphere = () => {
     });
 
     return (
-        <mesh ref={atm} position={[-1, -1, 0]}>
+        <mesh ref={atm} position={[0, 0, 0]}>
             <sphereBufferGeometry args={[1, 50, 50]} />
             <shaderMaterial 
                 vertexShader={shaders.atmosphereVertex}
@@ -107,9 +107,10 @@ const Planet = () => {
         <div className={classes.root}>
             <Canvas
                 camera={{
-                    near: 0.2,
-                    far: 500,
-                    zoom: 0.8,
+                    near: 0.6,
+                    far: 1000,
+                    zoom: 1,
+                    isPerspectiveCamera: true
                 }}
                 onCreated={({ gl }) => {
                     gl.setClearColor("rgb(255, 0, 0)", 0);
