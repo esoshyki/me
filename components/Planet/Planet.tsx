@@ -97,7 +97,7 @@ const Scene = () => {
 
     return (
         <Fragment>
-            <ambientLight />
+            <ambientLight intensity={1}/>
             <pointLight intensity={0.5} position={[10, 4.5, 1.2]} />
             <Atmosphere />
             <Earth />

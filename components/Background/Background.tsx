@@ -2,6 +2,7 @@ import classes from './Background.module.sass'
 import { Suspense, useEffect, useRef } from 'react'
 import { Canvas, useFrame } from "@react-three/fiber";
 import { BufferGeometry, PointsMaterial, TextureLoader, Float32BufferAttribute, BoxGeometry } from 'three';
+import { Stars } from '@react-three/drei';
 
 const Background = () => {
 
@@ -29,37 +30,37 @@ const Background = () => {
 
     }, [])
 
-    const Stars = () => {
+    // const Stars = () => {
 
-        const vertices: any[] = [];
+    //     const vertices: any[] = [];
 
-        const geometry = new BufferGeometry();
+    //     const geometry = new BufferGeometry();
 
-        for (let i = 0; i < 6000; i ++) {
-            const star = [
-                Math.random() * 600 - 300,
-                Math.random() * 600 - 300,
-                Math.random() * 600 - 300,
-            ]
-            vertices.push(...star)
-        }
+    //     for (let i = 0; i < 6000; i ++) {
+    //         const star = [
+    //             Math.random() * 600 - 300,
+    //             Math.random() * 600 - 300,
+    //             Math.random() * 600 - 300,
+    //         ]
+    //         vertices.push(...star)
+    //     }
 
-        geometry.setAttribute("position", new Float32BufferAttribute(vertices, 3))
+    //     geometry.setAttribute("position", new Float32BufferAttribute(vertices, 3))
 
-        const sprite = new TextureLoader().load("/star.png")
-        const starMaterial = new PointsMaterial({
-            size: 4,
-            map: sprite,
-            transparent: true
-        })
-        return (
-            <points 
-                geometry={geometry}
-                material={starMaterial}
-                >
-            </points>
-        )
-    };
+    //     const sprite = new TextureLoader().load("/star.png")
+    //     const starMaterial = new PointsMaterial({
+    //         size: 4,
+    //         map: sprite,
+    //         transparent: true
+    //     })
+    //     return (
+    //         <points 
+    //             geometry={geometry}
+    //             material={starMaterial}
+    //             >
+    //         </points>
+    //     )
+    // };
 
 
     return (
@@ -71,7 +72,7 @@ const Background = () => {
                     <perspectiveCamera 
                         position={[Math.PI / 2, Math.PI / 2, 1]}
                         args={[60, 1000 / 800, 1, 1000]}/>
-                    <Stars />
+                    <Stars radius={300} depth={60} count={10000} />
                 </Suspense>
             </Canvas>
             
