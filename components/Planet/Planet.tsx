@@ -2,7 +2,7 @@ import classes from "./Planet.module.sass";
 import { Suspense, useRef, useEffect, Fragment } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as three from "three";
-import { AdditiveBlending, BackSide, TextureLoader, } from "three";
+import { AdditiveBlending, BackSide, BufferGeometry, Float32BufferAttribute, PointsMaterial, TextureLoader, } from "three";
 import { select } from '../../store/select';
 import { useSelector} from 'react-redux';
 import { Screens } from "../../store/view/view.types";
@@ -47,11 +47,12 @@ const shaders = {
     atmosphereFragment: glsl`
         varying vec3 vertexNormal;
         void main() {
-            float intensity = pow(0.6 - dot(vertexNormal, vec3(0, 0, 1.0)), 2.0);
+            float intensity = pow(0.5 - dot(vertexNormal, vec3(0, 0, 1.0)), 2.0);
             gl_FragColor = vec4(0.3, 0.6, 1.0, 1) * intensity;
         }
     `
 }
+
 
 const Earth = () => {
     const earth = useRef<three.Mesh>();
@@ -96,6 +97,7 @@ const Atmosphere = () => {
 };
 
 const Scene = () => {
+
     return (
         <Fragment>
             <pointLight intensity={0.5} position={[1, 1, 5]} />

@@ -1,98 +1,71 @@
 import classes from './Background.module.sass'
-import { useEffect, useRef, useState } from 'react'
-import * as Matter from 'matter-js';
-import { useSelector } from 'react-redux';
-import { select } from '../../store/select';
+import { Suspense, useEffect, useRef } from 'react'
+import { BufferGeometry, Float32BufferAttribute, PointsMaterial} from "three";
+import { Canvas } from "@react-three/fiber";
 
 const Background = () => {
 
     const scene = useRef<HTMLDivElement>(null);
-    // const engine = useRef(Matter.Engine.create())
-    // const intervalRef = useRef<NodeJS.Timer>();
-    // const [render, setRender] = useState<any>();
+    
+    const onMouseMove = (e: MouseEvent) => {
+        if (!scene.current) return;
 
-    // const showCarousel = useSelector(select.view.showCarousel);
+        const screenWidth = window.screen.width;
+        const screenHeight = window.screen.height;
 
-    // const createBalls = () => {
-    //     const ball = Matter.Bodies.circle(
-    //         Math.floor(Math.random() * window.screen.width),
-    //         0,
-    //         Math.random() * 3,{
-    //             mass: 10,
-    //             restitution: 0.9,
-    //             friction: 0.05,
-    //             render: {
-    //                 fillStyle: "#fff"
-    //             },
-    //             isSensor: true
-    //         }
-    //     )
-    //     Matter.World.add(engine.current.world, ball);
-    //     setTimeout(() => {
-    //         Matter.World.remove(engine.current.world, ball)
-    //     }, 2000)
-    // }
+        const translateX = 4 * e.screenX / screenWidth;
+        const translateY = 4 * e.screenY / screenHeight;
 
-    // const starStarFall = () => {
-    //     if (!scene.current) return;
-    //     const cw = window.screen.width;
-    //     const ch = window.screen.height;
+        scene.current.style.transform = `translate(${-translateX}%, ${-translateY}%)`
+    }
 
-    //     const render = Matter.Render.create({
-    //         element: scene.current,
-    //         engine: engine.current,
-    //         options: {
-    //             width: cw,
-    //             height: ch,
-    //             wireframes: false,
-    //             background: "transparent",
-    //         }
-    //     })
+    useEffect(() => {
+        window.addEventListener("mousemove", onMouseMove);
 
-    //     Matter.World.add(engine.current.world, [
-    //         Matter.Bodies.rectangle(cw / 2, -10, cw, 20, { isStatic: true, render: {
-    //             fillStyle: "#000"
-    //         } }),
-    //         Matter.Bodies.rectangle(-10, ch / 2, 20, ch, { isStatic: true }),
-    //         Matter.Bodies.rectangle(cw / 2, ch + 10, cw, 20, { isStatic: true }),
-    //         Matter.Bodies.rectangle(cw + 10, ch / 2, 20, ch, { isStatic: true })
-    //       ])
-
-    //     Matter.Runner.run(engine.current)
-    //     Matter.Render.run(render)
-
-    //     intervalRef.current = setInterval(createBalls, 200);
-
-    //     setRender(render)
-    // }
-
-    // const endStarFall = (render: any) => {
-    //     Matter.Render.stop(render)
-    //     Matter.World.clear(engine.current.world, false)
-    //     Matter.Engine.clear(engine.current)
-    //     render.canvas.remove()
-    //     render.textures = {};
-    //     intervalRef.current && clearInterval(intervalRef.current)
-    // }
-
-    // useEffect(() => {
+        return () => {
+            window.removeEventListener("mousemove", onMouseMove);
+        }
+    }, [])
   
-    //     return () => {
-    //         endStarFall(render)
-    //     }
+    const Stars = () => {
+        const starsVertices = [];
+    
+        for (let i = 0; i < 10000; i++) {
+            const x = 1000 * (Math.random() - 0.5);
+            const y = 1000 * (Math.random() - 0.5);
+            const z = -4000 * (Math.random());
+            starsVertices.push(x, y, z);
+        }
+    
+        const starGeometry = new BufferGeometry();
+        starGeometry.setAttribute("position", new Float32BufferAttribute(starsVertices, 3))
+    
+        return (
+            <points 
+                geometry={starGeometry}
+                material={new PointsMaterial({
+                    color: 0xffffff
+                })}
+                >
+            </points>
+        )
+    }
+    
 
-    // }, [])
-
-    // useEffect(() => {
-    //     if (showCarousel) {
-    //         starStarFall()
-    //     };
-    // }, [showCarousel])
 
     return (
         <div 
+            onMouseMove={() => {console.log("MOUSE MOVE")}}
             ref={scene}
             className={classes.root}>
+            <Canvas 
+                camera={{
+                zoom: 2
+            }}>
+                <Suspense fallback={null}>
+                    <Stars />
+                </Suspense>
+            </Canvas>
             
         </div>
     )
