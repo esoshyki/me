@@ -10,6 +10,9 @@ export const homeContent = {
         manao: "Manao",
         react: "React with server-side rendering",
         reactBody: "Server side rendering allows using pluses of speed of React and possibility of making seo support of the site. For this we use a framework - Next JS"
+    },
+    [Locales.be] : {
+        manao: "Манао"
     }
 };
 
@@ -46,6 +49,45 @@ const ruCarousel: ICarouselItem[] = [
         icon: "/seo.png",
         title: "Продвижение сайта",
         html: "Наши специалисты по SEO обеспечат продвижение сайта в поисковиках и грамотную логическую структуру",
+        id: 3,
+        left: 100,
+        top: 100
+    },
+];
+
+const beCarousel: ICarouselItem[] = [
+    {   
+        screen: Screens.Home,
+        icon: "/React.png",
+        title: "Рэакт с рэндэрынгам на баку сервера",
+        html: "Рендерынг на серверы дазваляе выкарыстоўваць плюсы хуткасцi працы бібліятэкі Рэакт и дае магчымасць ажыццяўляць сеа падтрымку сайта. Для гэтага выкарыстоўваецца библiятэка - Next JS",
+        id: 0,
+        left: 0,
+        top: 0
+    },
+    {
+        screen: Screens.NodeJS,
+        icon: "/nodeJS.png",
+        title: "Магчымасць напiсання асабiтага сервера на Node JS",
+        html: "Мы можам напісаць уласны прасунуты сервер, з абаронай, падтрымкай cookies, аўтарызацыяй і базай дадзеных. Для гэтаго, напрыклад, можна карыстацца сучасным магутным фрэймворкам - Nest",
+        id: 1,
+        left: 100,
+        top: -100,
+    },
+    {
+        screen: Screens.Quality,
+        icon: "/quality.png",
+        title: "Гарантыя якасці і тэхнічная падтрымка",
+        html: "Нашы спецыялісты гарантуе кругласутачную падтрымку і тэхнічнае спараджэнне прадукта",
+        id: 2,
+        left: 200,
+        top: 0
+    },
+    {
+        screen: Screens.Seo,
+        icon: "/seo.png",
+        title: "Прасоўванне сайта",
+        html: "Нашы спецыялісты па SEO забяспечаць прасоўванне сайта ў пошукавых сістэмах і пісьменную лагічную структуру.",
         id: 3,
         left: 100,
         top: 100
@@ -93,6 +135,7 @@ const enCarousel: ICarouselItem[] = [
 
 export const carouselData = {
     ruCarousel,
-    enCarousel
+    enCarousel,
+    beCarousel
 }
 

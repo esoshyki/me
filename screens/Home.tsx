@@ -13,7 +13,18 @@ const Home = () => {
 
     const locale = useSelector(select.view.locale);
 
-    const items = locale === Locales.ru ? carouselData.ruCarousel : carouselData.enCarousel;
+    const getItems = () => {
+        switch (locale) {
+            case Locales.be:
+                return carouselData.beCarousel
+            case Locales.en:
+                return carouselData.enCarousel
+            default:
+                return carouselData.ruCarousel
+        }
+    }
+
+    const items = getItems();
 
     return (
         <div className={[classes.screen, classes.home].join(" ")}>

@@ -41,6 +41,7 @@ const LanguageSwitcher = () => {
         <div className={classes.language}>
             <a className={locale === "en" ? classes.active : ""} href='/en'>En</a>
             <a className={locale === "ru" ? classes.active : ""} href="/ru">Ru</a>
+            <a className={locale === "be" ? classes.active : ""} href="/be">Be</a>
         </div>  
     )
 }

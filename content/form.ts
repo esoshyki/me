@@ -16,5 +16,13 @@ export const contactFormContent = {
         company: "Company",
         question: "Tell us about yours order",
         send: "Send"
+    },
+    [Locales.be]: {
+        fio: "Прозвішча, Імя, імя па бацьку",
+        phone: "Тэлефон",
+        email: "Электронная пошта",
+        company: "Кампанія",
+        question: "Раскажыце аб Вашай замове",
+        send: "Адправіць"
     }
 };
