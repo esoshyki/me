@@ -77,4 +77,30 @@
         animation: underline 200ms linear 0s
 
 
+.language
+    position: fixed
+    top: 0
+    padding: 20px
+    left: 200px
+
+    a
+        position: relative
+        margin: 0 20px
+        &::after
+            position: absolute
+            content: ""
+            width: 2px
+            height: 100%
+            left: 36px
+            background-color: #fff
+        &:last-child
+            &::after
+                display: none
+
+.active
+    color: #ddc227
+
+            
+
+
     

@@ -50,7 +50,7 @@ const Audio = () => {
     return (
         <Fragment>
             <div className={classes.Ukraine} onClick={onClick}></div>
-            <audio autoPlay={true} loop={true} preload="auto" ref={audioRef}>
+            <audio loop={true} preload="auto" ref={audioRef}>
                 <source src={src}  type="audio/mp3" />
             </audio>
 

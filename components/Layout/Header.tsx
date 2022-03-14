@@ -33,6 +33,18 @@ const HeaderLink = ({ title, selected, screen } : {
     )
 }
 
+const LanguageSwitcher = () => {
+
+    const locale = useSelector(select.view.locale);
+    
+    return (
+        <div className={classes.language}>
+            <a className={locale === "en" ? classes.active : ""} href='/en'>En</a>
+            <a className={locale === "ru" ? classes.active : ""} href="/ru">Ru</a>
+        </div>  
+    )
+}
+
 const Header = () => {
 
     const locale = useSelector(select.view.locale);
@@ -61,6 +73,7 @@ const Header = () => {
         <header className={classes.header}>
             { links.map((link, idx) => (
                 <Fragment key={idx}>
+                    <LanguageSwitcher />
                     <HeaderLink 
                         title={link.title}
                         selected={link.screen === screen}

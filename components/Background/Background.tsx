@@ -55,7 +55,6 @@ const Background = () => {
 
     return (
         <div 
-            onMouseMove={() => {console.log("MOUSE MOVE")}}
             ref={scene}
             className={classes.root}>
             <Canvas 
