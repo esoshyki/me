@@ -1,7 +1,10 @@
 import classes from './Background.module.sass'
 import { Suspense, useEffect, useRef } from 'react'
-import { BufferGeometry, Float32BufferAttribute, PointsMaterial} from "three";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useSpring } from 'react-spring';
+import { OrbitControls } from '@react-three/drei';
+import { BufferGeometry, PointsMaterial, TextureLoader, Float32BufferAttribute, BoxGeometry } from 'three';
+import { rgb } from '@react-spring/shared';
 
 const Background = () => {
 
@@ -19,49 +22,58 @@ const Background = () => {
         scene.current.style.transform = `translate(${-translateX}%, ${-translateY}%)`
     }
 
-    useEffect(() => {
+    useEffect(() => {   
         window.addEventListener("mousemove", onMouseMove);
 
         return () => {
             window.removeEventListener("mousemove", onMouseMove);
         }
+
+
     }, [])
-  
+
     const Stars = () => {
-        const starsVertices = [];
-    
-        for (let i = 0; i < 10000; i++) {
-            const x = 1000 * (Math.random() - 0.5);
-            const y = 1000 * (Math.random() - 0.5);
-            const z = -3000 * (Math.random() * 0.5);
-            starsVertices.push(x, y, z);
+
+        const vertices: any[] = [];
+
+        const geometry = new BufferGeometry();
+
+        for (let i = 0; i < 6000; i ++) {
+            const star = [
+                Math.random() * 600 - 300,
+                Math.random() * 600 - 300,
+                Math.random() * 600 - 300,
+            ]
+            vertices.push(...star)
         }
-    
-        const starGeometry = new BufferGeometry();
-        starGeometry.setAttribute("position", new Float32BufferAttribute(starsVertices, 3))
-    
+
+        geometry.setAttribute("position", new Float32BufferAttribute(vertices, 3))
+
+        const sprite = new TextureLoader().load("/star.png")
+        const starMaterial = new PointsMaterial({
+            size: 4,
+            map: sprite,
+            transparent: true
+        })
         return (
             <points 
-                geometry={starGeometry}
-                material={new PointsMaterial({
-                    color: 0xffffff
-                })}
+                geometry={geometry}
+                material={starMaterial}
                 >
             </points>
         )
-    }
-    
+    };
 
 
     return (
         <div 
             ref={scene}
             className={classes.root}>
-            <Canvas 
-                camera={{
-                zoom: 2
-            }}>
+            <Canvas >
                 <Suspense fallback={null}>
+                    <perspectiveCamera 
+                        position={[Math.PI / 2, Math.PI / 2, 1]}
+                        args={[60, 1000 / 800, 1, 1000]}/>
                     <Stars />
                 </Suspense>
             </Canvas>
