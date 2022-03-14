@@ -1,0 +1,68 @@
+@import ../../theme/flex
+    
+.root
+    position: fixed
+    right: 20px
+    top: 20px
+    width: 150px
+    height: 50px
+    z-index: 1000
+    background: linear-gradient(270deg,#222322 3.48%,#131311)
+    border-radius: 25px
+    transition: 300ms ease-in
+    +flex(row, center, center)
+    &:hover
+        cursor: pointer
+
+.hidden_root
+    background: none
+
+.header
+    width: 100px
+    height: 50px
+    +flex(row, center, center)
+    color: #fff
+    transition: 300ms ease-in
+    opacity: 1
+
+.hidden_header
+    opacity: 0
+
+.canvas_wrapper
+    width: 50px
+    height: 50px
+    position: relative
+
+.button_outer
+    width: 50px
+    height: 50px
+    border: 1px solid #000
+    border-radius: 25px
+    +flex
+
+.button
+    width: 40px
+    height: 40px
+    background-color: #52c425
+    border-radius: 20px
+    border: 1px solid #000
+    transition: 300ms ease-in 100ms
+    transform: rotate3d(1, 0, 0, 0deg)
+    &:hover
+        // transform: rotate3d(1, 0, 0, 180deg)
+        // background-color: pink
+
+.rotated
+    transform: rotate3d(1, 0, 0, 180deg)
+    position: relative
+    background-color: #d33737
+    &::after
+        position: absolute
+        content: "x"
+        top: 7px
+        left: 14px
+        color: #fff
+        font-weight: 900
+
+.clicked
+    transform: scale(0.9)

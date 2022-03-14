@@ -1,11 +1,8 @@
 import classes from "./Planet.module.sass";
-import { Suspense, useRef, useEffect, Fragment } from "react";
+import { Suspense, useRef, Fragment } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as three from "three";
-import { AdditiveBlending, BackSide, BufferGeometry, Float32BufferAttribute, PointsMaterial, TextureLoader, } from "three";
-import { select } from '../../store/select';
-import { useSelector} from 'react-redux';
-import { Screens } from "../../store/view/view.types";
+import { AdditiveBlending, BackSide, TextureLoader, } from "three";
 
 const glsl = require("glslify");
 

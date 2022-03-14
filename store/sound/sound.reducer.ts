@@ -3,7 +3,8 @@ import { SoundActions } from "./sound.actions";
 import { SoundState } from "./sound.types";
 
 const initState: SoundState = {
-    volume: 0.2
+    volume: 0.2,
+    on: true
 }
 
 export const soundReducer = (state = initState, action: Action) : SoundState => {

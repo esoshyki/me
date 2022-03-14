@@ -28,24 +28,11 @@ const Audio = () => {
     }
 
     const onSoundClick = () => {
-        dispatch(toggleSound(soundOn ? undefined : true))
-    }
-
-    useEffect(() => {
-        if (soundOn) {
-            if (soundRef.current) {
-                soundRef.current.play()
-            }
-        } else {
-            if (soundRef.current) {
-                soundRef.current.pause()
-                soundRef.current.currentTime = 0;
-            }
-            if (audioRef.current) {
-                audioRef.current.pause()
-            }
+        dispatch(toggleSound(soundOn ? undefined : true));
+        if (soundRef.current && !soundOn) {
+            soundRef.current.play()
         }
-    }, [soundOn])
+    }
 
     return (
         <Fragment>

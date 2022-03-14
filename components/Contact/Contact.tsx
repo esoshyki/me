@@ -4,6 +4,7 @@ import { content } from '../../content';
 import { select } from '../../store/select';
 import { toggleShowContact } from '../../store/view/view.actions';
 import classes from './Contact.module.sass'
+import ContactButton from './ContactButton';
 import Form from './Form';
 
 const Contact = () => {
@@ -29,7 +30,7 @@ const Contact = () => {
 
     return (
         <Fragment>
-            <div
+            {/* <div
                 className={getButtonStyle()} 
                 onClick={handleClick}
                 >
@@ -37,7 +38,8 @@ const Contact = () => {
                 <div className={classes.button__text}>
                     {content.contact[locale].h2}
                 </div>
-            </div>
+            </div> */}
+            <ContactButton />
             <div 
                 ref={rootRef}
                 className={classes.root} 
