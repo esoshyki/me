@@ -39,7 +39,9 @@ const Form = () => {
             <input 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className={classes.input} />
+                className={classes.input} 
+                required
+                />
 
             <label>{content.contactForm[locale].company}</label>
             <input 

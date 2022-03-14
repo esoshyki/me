@@ -1,4 +1,5 @@
 @import ../../theme/flex
+@import ../../theme/media
     
 .root
     position: fixed
@@ -13,6 +14,8 @@
     +flex(row, center, center)
     &:hover
         cursor: pointer
+    +mobile
+        top: 60px
 
 .hidden_root
     background: none
