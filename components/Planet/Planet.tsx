@@ -130,6 +130,7 @@ const Atmosphere = () => {
                 fragmentShader={shaders.atmosphereFragment}
                 blending={AdditiveBlending}
                 side={BackSide}
+                transparent={true}
             />
         </mesh>
     );
