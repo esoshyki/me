@@ -33,7 +33,7 @@ const Background = () => {
         for (let i = 0; i < 10000; i++) {
             const x = 1000 * (Math.random() - 0.5);
             const y = 1000 * (Math.random() - 0.5);
-            const z = -4000 * (Math.random());
+            const z = -3000 * (Math.random() * 0.5);
             starsVertices.push(x, y, z);
         }
     
