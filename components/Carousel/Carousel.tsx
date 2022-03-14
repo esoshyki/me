@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState, WheelEvent } from 'react';
+import { Fragment, TouchEvent, useEffect, useRef, useState, WheelEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { select } from '../../store/select';
 import { changeScreenRequest } from '../../store/view/view.actions';
@@ -82,10 +82,51 @@ const Carousel = ({ items } : {
             collected.push(classes.inactive)
         }
         return collected.join(" ")
+    };
+
+    const [touchX, setTouchX] = useState(0);
+
+    const touchStart = (e: TouchEvent<HTMLDivElement>) => {
+        const touch = e.touches[0];
+        if (touch) {
+            setTouchX(touch.clientX);
+        }
+    }
+
+    const touchEnd = (e: TouchEvent<HTMLDivElement>) => {
+        setTouchX(0)
+    }
+
+    const touchMove = (e: TouchEvent<HTMLDivElement>) => {
+        const touch = e.touches[0];
+        
+        if (touch) {
+            const distance = touch.clientX - touchX
+
+            if (distance > 200 && relative[1].screen) {
+                dispatch(changeScreenRequest(relative[1].screen));
+                setDisable(true) 
+                setHide(true)
+                setTouchX(0)        
+            }
+
+            if (distance < -200 && relative[3].screen) {
+                dispatch(changeScreenRequest(relative[3].screen));
+                setDisable(true) 
+                setHide(true)
+                setTouchX(0)           
+            }
+        }
+        
     }
 
     return (
-        <div className={classes.carouselWrapper} onWheel={onWheel}>
+        <div className={classes.carouselWrapper} 
+            onWheel={onWheel} 
+            onTouchMove={touchMove}
+            onTouchStart={touchStart}
+            onTouchEnd={touchEnd}
+            >
             <audio ref={audioRef}>
                 <source src={swipe} type="audio/wav"/>    
             </audio>
