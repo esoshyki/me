@@ -45,7 +45,6 @@ const HomePage: NextPage = () => {
             top: 0,
             left: 0,
         }}>
-            <Background />
             {getScreen()}
         </div>
     )

@@ -5,10 +5,12 @@ import Audio from "../components/Audio";
 import { Provider } from "react-redux";
 import { store } from "../store";
 import { appWithTranslation } from 'next-i18next';
+import Background from "../components/Background";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
+      <Background />
     	<Layout>
         	<Audio />
         	<Component {...pageProps} />
