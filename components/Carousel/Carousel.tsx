@@ -103,14 +103,14 @@ const Carousel = ({ items } : {
         if (touch) {
             const distance = touch.clientX - touchX
 
-            if (distance > 200 && relative[1].screen) {
+            if (distance > 100 && relative[1].screen) {
                 dispatch(changeScreenRequest(relative[1].screen));
                 setDisable(true) 
                 setHide(true)
                 setTouchX(0)        
             }
 
-            if (distance < -200 && relative[3].screen) {
+            if (distance < -100 && relative[3].screen) {
                 dispatch(changeScreenRequest(relative[3].screen));
                 setDisable(true) 
                 setHide(true)
