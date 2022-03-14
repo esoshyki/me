@@ -7,7 +7,8 @@ import { Locales } from '../content/locales'
 import Home from '../screens/Home'
 import { select } from '../store/select'
 import { setLocale } from '../store/view/view.actions'
-import { theme } from '../theme'
+import { theme } from '../theme';
+import Background from '../components/Background'
 
 const HomePage: NextPage = () => {
 
@@ -44,6 +45,7 @@ const HomePage: NextPage = () => {
             top: 0,
             left: 0,
         }}>
+            <Background />
             {getScreen()}
         </div>
     )

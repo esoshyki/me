@@ -1,10 +1,7 @@
 import classes from './Background.module.sass'
 import { Suspense, useEffect, useRef } from 'react'
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useSpring } from 'react-spring';
-import { OrbitControls } from '@react-three/drei';
 import { BufferGeometry, PointsMaterial, TextureLoader, Float32BufferAttribute, BoxGeometry } from 'three';
-import { rgb } from '@react-spring/shared';
 
 const Background = () => {
 

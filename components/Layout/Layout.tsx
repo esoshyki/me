@@ -1,7 +1,6 @@
-import { Fragment, ReactNode, useEffect } from 'react'
+import { Fragment, ReactNode } from 'react'
 import { useSelector } from 'react-redux';
 import { select } from '../../store/select';
-import Background from '../Background';
 import Contact from '../Contact';
 import Planet from '../Planet';
 import Header from './Header';
@@ -13,20 +12,13 @@ interface LayoutProps {
 
 function Layout ({ children } : LayoutProps) {
 
-    const showCarousel = useSelector(select.view.showCarousel);
     const showContactWrapper = useSelector(select.view.showContactWrapper);
-
-    const getClass = () => {
-        return showCarousel ? [classes.main, classes.space].join(" ") : classes.main
-    }
-   
 
     return (
         <Fragment>
-            <Background />
             {showContactWrapper && <Contact />}
             <Header />
-            <main className={getClass()} >
+            <main className={classes.main} >
                 {children}
             </main>
             <footer>
