@@ -1,6 +1,7 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { content } from '../../content';
+import { Locales } from '../../content/locales';
 import { select } from '../../store/select';
 import { changeScreenRequest } from '../../store/view/view.actions';
 import { Screens } from '../../store/view/view.types';
@@ -36,12 +37,47 @@ const HeaderLink = ({ title, selected, screen } : {
 const LanguageSwitcher = () => {
 
     const locale = useSelector(select.view.locale);
-    
+    const [hover, setHover] = useState(false);
+
+    const handleMouseEnter = () => {
+        setHover(true);
+    }
+
+    const handleMouseLeave = () => {
+        setHover(false)
+    };
+
+    const getLocaleTitle = () => {
+        switch (locale) {
+            case Locales.be:
+                return "Бел"
+            case Locales.en:
+                return "Eng"
+            default:
+                return "Рус"
+        }
+    }
+
     return (
-        <div className={classes.language}>
-            <a className={locale === "en" ? classes.active : ""} href='/en'>En</a>
-            <a className={locale === "ru" ? classes.active : ""} href="/ru">Ru</a>
-            <a className={locale === "be" ? classes.active : ""} href="/be">Be</a>
+        <div 
+            className={classes.language} 
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            >
+
+            {hover && (
+                <div className={classes.link_container}>
+                    <a className={locale === "en" ? classes.active : ""} href='/en'>Eng</a>
+                    <a className={locale === "ru" ? classes.active : ""} href='/ru'>Рус</a>
+                    <a className={locale === "be" ? classes.active : ""} href='/be'>Бел</a>
+                </div>    
+            )}
+
+            {!hover && (
+                <a className={classes.active} href={`/${locale}`}>{getLocaleTitle()}</a>
+            )}
+
+
         </div>  
     )
 }
@@ -72,9 +108,9 @@ const Header = () => {
 
     return (
         <header className={classes.header}>
+            <LanguageSwitcher />
             { links.map((link, idx) => (
                 <Fragment key={idx}>
-                    <LanguageSwitcher />
                     <HeaderLink 
                         title={link.title}
                         selected={link.screen === screen}
