@@ -2,7 +2,7 @@ import classes from './Background.module.sass'
 import { Suspense, useEffect, useRef } from 'react'
 import { Canvas, useFrame } from "@react-three/fiber";
 import { BufferGeometry, PointsMaterial, TextureLoader, Float32BufferAttribute, BoxGeometry } from 'three';
-import { Stars } from '@react-three/drei';
+import { Stars, MapControls } from '@react-three/drei';
 
 const Background = () => {
 
@@ -40,6 +40,7 @@ const Background = () => {
                         position={[Math.PI / 2, Math.PI / 2, 1]}
                         args={[60, 1000 / 800, 1, 1000]}/>
                     <Stars radius={300} depth={60} count={10000} />
+                    <MapControls />
                 </Suspense>
             </Canvas>
             

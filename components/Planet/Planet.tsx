@@ -32,6 +32,28 @@ const shaders = {
                 gl_FragColor = vec4(atmosphere + texture2D(globalTexture, vertexUV).xyz, 1.0);
             }
         `,
+    moonVertex: glsl`
+        varying vec2 vertexUV;
+        varying vec3 vertexNormal;
+        void main() {
+            vertexUV =  uv;
+            vertexNormal = normalize(normalMatrix * normal);
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(
+                position, 1.5
+            );
+        }     
+        `,
+    moonFragment: glsl`
+        uniform sampler2D globalTexture;
+        varying vec2 vertexUV;
+        varying vec3 vertexNormal;
+        void main() {
+
+            float intensity = 1.3 - dot(vertexNormal, vec3(0.0, 0.0, 2.0));
+
+            gl_FragColor = vec4(texture2D(globalTexture, vertexUV).xyz, 0.5);
+        }      
+    `,
     atmosphereVertex: glsl`
         varying vec3 vertexNormal;
         void main() {
@@ -50,25 +72,45 @@ const shaders = {
     `
 }
 
-
 const Earth = () => {
     const earth = useRef<three.Mesh>();
+    const moon = useRef<three.Mesh>();
+
 
     useFrame(() => {
+        if (!moon.current) return;
+        const radius = 2;
+        const angle = moon.current?.rotation.y;
+        moon.current.position.x = radius * Math.cos(angle);
+        moon.current.position.z = radius * Math.sin(angle);
         earth.current!.rotation.y += 0.001;
+        moon.current!.rotation.y -= 0.001;
     });
 
     return (
-        <mesh ref={earth} position={[0, 0, 0]}>
-            <sphereBufferGeometry args={[1, 50, 50]} />
+        <group>
+            <mesh ref={earth} position={[0, 0, 0]} castShadow={true} receiveShadow={true}>
+                <sphereBufferGeometry args={[1, 50, 50]} />
+                <shaderMaterial 
+                    vertexShader={shaders.vertexShader}
+                    fragmentShader={shaders.fragmentShader}
+                    uniforms={{globalTexture: {
+                        value: new TextureLoader().load("/earth.jpeg")
+                    }}}
+                />
+            </mesh>
+
+            <mesh ref={moon} position={[2, 0, 0]}>
+            <sphereGeometry args={[0.4, 50, 50]} />
             <shaderMaterial 
-                vertexShader={shaders.vertexShader}
-                fragmentShader={shaders.fragmentShader}
+                vertexShader={shaders.moonVertex}
+                fragmentShader={shaders.moonFragment}
                 uniforms={{globalTexture: {
-                    value: new TextureLoader().load("/earth.jpeg")
+                    value: new TextureLoader().load("/moon.jpg")
                 }}}
             />
-        </mesh>
+            </mesh>
+        </group>
     );
 };
 
@@ -81,7 +123,7 @@ const Atmosphere = () => {
     });
 
     return (
-        <mesh ref={atm} position={[0, 0, 0]}>
+        <mesh ref={atm} position={[0, 0, 0]} castShadow={true} receiveShadow={true}>
             <sphereBufferGeometry args={[1, 50, 50]} />
             <shaderMaterial 
                 vertexShader={shaders.atmosphereVertex}
@@ -101,6 +143,7 @@ const Scene = () => {
             <pointLight intensity={1.5} position={[3, 0, 2]} />
             <Atmosphere />
             <Earth />
+            {/* <Moon /> */}
         </Fragment>
     );
 };
