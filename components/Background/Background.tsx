@@ -30,39 +30,6 @@ const Background = () => {
 
     }, [])
 
-    // const Stars = () => {
-
-    //     const vertices: any[] = [];
-
-    //     const geometry = new BufferGeometry();
-
-    //     for (let i = 0; i < 6000; i ++) {
-    //         const star = [
-    //             Math.random() * 600 - 300,
-    //             Math.random() * 600 - 300,
-    //             Math.random() * 600 - 300,
-    //         ]
-    //         vertices.push(...star)
-    //     }
-
-    //     geometry.setAttribute("position", new Float32BufferAttribute(vertices, 3))
-
-    //     const sprite = new TextureLoader().load("/star.png")
-    //     const starMaterial = new PointsMaterial({
-    //         size: 4,
-    //         map: sprite,
-    //         transparent: true
-    //     })
-    //     return (
-    //         <points 
-    //             geometry={geometry}
-    //             material={starMaterial}
-    //             >
-    //         </points>
-    //     )
-    // };
-
-
     return (
         <div 
             ref={scene}
