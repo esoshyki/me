@@ -19,7 +19,6 @@ const Carousel = ({ items } : {
     const [hide, setHide] = useState(true);
 
     const rootRef = useRef<HTMLDivElement>(null);
-    const audioRef = useRef<HTMLAudioElement>(null);
 
     const onAnimationEnd = () => {
         setHide(false);
@@ -60,12 +59,6 @@ const Carousel = ({ items } : {
 
     useEffect(() => {
         if (disable) {
-            if (audioRef.current && soundOn) {
-                if (!audioRef.current.paused) {
-                    audioRef.current.currentTime = 0
-                }
-                audioRef.current.play();
-            };
             setTimeout(() => {
                 setDisable(false)
             }, 300)
@@ -127,9 +120,6 @@ const Carousel = ({ items } : {
             onTouchStart={touchStart}
             onTouchEnd={touchEnd}
             >
-            <audio ref={audioRef}>
-                <source src={swipe} type="audio/wav"/>    
-            </audio>
             {showCarousel && <div 
                 onAnimationEnd={onAnimationEnd}
                 ref={rootRef}
