@@ -37,9 +37,11 @@ const CarouselItem = ({
             left: `${left}%`,
             top: `${top}%`
         }}>
-            <div className={classes.item__icon} style={{
-                backgroundImage: `url(${icon})`
-            }}/>
+            <div className={classes.item__icon__wrapper}>
+                <div className={classes.item__icon} style={{
+                    backgroundImage: `url(${icon})`
+                }}/>
+            </div>
 
             <div className={classes.item__content}>
                 <h3>{title}</h3>
